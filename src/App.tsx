@@ -16,6 +16,16 @@ export default function App() {
     setTasks([...tasks, task]);
   }
 
+  function toggleCheckedTask(taskToUpdate: Task) {
+    setTasks((tasks) =>
+      tasks.map((task) =>
+        task.id === taskToUpdate.id
+          ? { ...task, checkedAt: task.checkedAt ? null : new Date() }
+          : task
+      )
+    );
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -23,7 +33,7 @@ export default function App() {
       </header>
       <main className={styles.content}>
         <NewTask onCreateTask={createTask} />
-        <TasksList tasks={tasks} />
+        <TasksList tasks={tasks} onCheckedChange={toggleCheckedTask} />
       </main>
     </>
   );

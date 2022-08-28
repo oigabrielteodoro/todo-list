@@ -24,6 +24,8 @@ export default function NewTask({ onCreateTask }: Props) {
     };
 
     onCreateTask(task);
+
+    setNewTaskText("");
   }
 
   function handleNewTaskTextChange(event: ChangeEvent<HTMLInputElement>) {

@@ -4,6 +4,7 @@
   align-items: center;
   padding: 6.4rem 2.4rem;
   text-align: center;
+  border-top: 0.1rem solid var(--gray-400);
 }
 
 .emptyState > strong {

@@ -1,14 +1,16 @@
 import type { Task } from "../../types/Task";
 
 import EmptyState from "./EmptyState";
+import TaskItem from "./TaskItem/TaskItem";
 
 import styles from "./TasksList.module.css";
 
 type Props = {
   tasks: Task[];
+  onCheckedChange: (task: Task) => void;
 };
 
-export default function TasksList({ tasks }: Props) {
+export default function TasksList({ tasks, onCheckedChange }: Props) {
   const isEmpty = tasks.length === 0;
 
   return (
@@ -21,13 +23,16 @@ export default function TasksList({ tasks }: Props) {
           Concluídas <span className={styles.countNumber}>0</span>
         </strong>
       </header>
-      <hr />
       {isEmpty ? (
         <EmptyState />
       ) : (
-        <ul>
+        <ul className={styles.tasksList}>
           {tasks.map((task) => (
-            <li key={task.id}>{task.content}</li>
+            <TaskItem
+              key={task.id}
+              task={task}
+              onCheckedChange={onCheckedChange}
+            />
           ))}
         </ul>
       )}

@@ -1,0 +1,28 @@
+.radioBox {
+  position: relative;
+  line-height: 0;
+}
+
+.radio {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  height: 1.8rem;
+  width: 1.8rem;
+  
+  background: transparent;
+  border-radius: 50%;
+  border: 0.2rem solid var(--blue);
+  
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.radio:hover {
+  border-color: var(--purple);
+}
+
+.radio:checked {
+  background: var(--purple);
+  border-color: var(--purple);
+}
