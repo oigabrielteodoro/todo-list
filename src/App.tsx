@@ -1,5 +1,6 @@
 import Logo from "./components/Logo";
 import NewTask from "./components/NewTask";
+import TasksList from "./components/TasksList";
 
 import styles from "./App.module.css";
 
@@ -17,6 +18,7 @@ export default function App() {
       </header>
       <main className={styles.content}>
         <NewTask onCreateTask={createTask} />
+        <TasksList />
       </main>
     </>
   );

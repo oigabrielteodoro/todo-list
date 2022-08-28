@@ -1,0 +1,48 @@
+.tasks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6.4rem;
+}
+
+.tasks > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tasks > header .createdCount {
+  color: var(--blue);
+}
+
+.tasks > header .completedCount {
+  color: var(--purple);
+}
+
+.countNumber {
+  color: var(--gray-100);
+  padding: 0.2rem 0.8rem;
+  background: var(--gray-400);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  margin-left: 0.8rem;
+}
+
+.tasks > hr {
+  border-top: 0.1rem solid var(--gray-400);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin-top: 2.4rem;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6.4rem 2.4rem;
+  text-align: center;
+}
+
+.emptyState > strong {
+  margin-top: 1.6rem;
+}
