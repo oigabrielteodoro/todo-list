@@ -1,8 +1,16 @@
-import clipboardIcon from "../../assets/clipboard.png";
+import type { Task } from "../../types/Task";
+
+import EmptyState from "./EmptyState";
 
 import styles from "./TasksList.module.css";
 
-export default function TasksList() {
+type Props = {
+  tasks: Task[];
+};
+
+export default function TasksList({ tasks }: Props) {
+  const isEmpty = tasks.length === 0;
+
   return (
     <section className={styles.tasks}>
       <header>
@@ -14,14 +22,15 @@ export default function TasksList() {
         </strong>
       </header>
       <hr />
-      <div className={styles.emptyState}>
-        <img
-          src={clipboardIcon}
-          alt="Ícone de prancheta na cor cinza escuro para representar sua lista de tarefas vazia"
-        />
-        <strong>Você ainda não tem tarefas cadastradas</strong>
-        <span>Crie tarefas e organize seus itens a fazer</span>
-      </div>
+      {isEmpty ? (
+        <EmptyState />
+      ) : (
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>{task.content}</li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }
