@@ -17,13 +17,17 @@ export default function App() {
   }
 
   function toggleCheckedTask(taskToUpdate: Task) {
-    setTasks((tasks) =>
-      tasks.map((task) =>
+    setTasks((state) =>
+      state.map((task) =>
         task.id === taskToUpdate.id
           ? { ...task, checkedAt: task.checkedAt ? null : new Date() }
           : task
       )
     );
+  }
+
+  function deleteTask(taskToDelete: Task) {
+    setTasks((state) => state.filter((task) => task.id !== taskToDelete.id));
   }
 
   return (
@@ -33,7 +37,11 @@ export default function App() {
       </header>
       <main className={styles.content}>
         <NewTask onCreateTask={createTask} />
-        <TasksList tasks={tasks} onCheckedChange={toggleCheckedTask} />
+        <TasksList
+          tasks={tasks}
+          onCheckedChange={toggleCheckedTask}
+          onDeleteTask={deleteTask}
+        />
       </main>
     </>
   );

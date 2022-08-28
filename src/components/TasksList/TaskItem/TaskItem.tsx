@@ -8,14 +8,21 @@ import styles from "./TaskItem.module.css";
 type Props = {
   task: Task;
   onCheckedChange: (task: Task) => void;
+  onDeleteTask: (task: Task) => void;
 };
 
-export default function TaskItem({ task, onCheckedChange }: Props) {
+export default function TaskItem({
+  task,
+  onCheckedChange,
+  onDeleteTask,
+}: Props) {
   function handleCheckedChange() {
     onCheckedChange(task);
   }
 
-  console.log(task);
+  function handleDeleteTask() {
+    onDeleteTask(task);
+  }
 
   return (
     <li className={styles.taskItem}>
@@ -23,7 +30,11 @@ export default function TaskItem({ task, onCheckedChange }: Props) {
       <p className={task.checkedAt ? styles.checked : undefined}>
         {task.content}
       </p>
-      <button title="Excluir tarefa" className={styles.deleteTask}>
+      <button
+        title="Excluir tarefa"
+        className={styles.deleteTask}
+        onClick={handleDeleteTask}
+      >
         <Trash size={16} />
       </button>
     </li>

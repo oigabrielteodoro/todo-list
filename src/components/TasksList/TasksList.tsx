@@ -8,9 +8,14 @@ import styles from "./TasksList.module.css";
 type Props = {
   tasks: Task[];
   onCheckedChange: (task: Task) => void;
+  onDeleteTask: (task: Task) => void;
 };
 
-export default function TasksList({ tasks, onCheckedChange }: Props) {
+export default function TasksList({
+  tasks,
+  onCheckedChange,
+  onDeleteTask,
+}: Props) {
   const isEmpty = tasks.length === 0;
 
   return (
@@ -32,6 +37,7 @@ export default function TasksList({ tasks, onCheckedChange }: Props) {
               key={task.id}
               task={task}
               onCheckedChange={onCheckedChange}
+              onDeleteTask={onDeleteTask}
             />
           ))}
         </ul>
