@@ -21,6 +21,13 @@ export default function TasksList({
     Boolean(task.checkedAt)
   ).length;
 
+  const orderedTasks = tasks.sort((a, b) => {
+    const dateA = a.checkedAt ?? new Date();
+    const dateB = b.checkedAt ?? new Date();
+
+    return dateA.getTime() > dateB.getTime() ? -1 : 1;
+  });
+
   const isEmpty = tasks.length === 0;
 
   return (
@@ -43,7 +50,7 @@ export default function TasksList({
         <EmptyState />
       ) : (
         <ul className={styles.tasksList}>
-          {tasks.map((task) => (
+          {orderedTasks.map((task) => (
             <TaskItem
               key={task.id}
               task={task}
