@@ -1,3 +1,23 @@
+import Logo from "./components/Logo";
+import NewTask from "./components/NewTask";
+
+import styles from "./App.module.css";
+
+import "./global.css";
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  function createTask() {
+    console.log("Task created");
+  }
+
+  return (
+    <>
+      <header className={styles.header}>
+        <Logo />
+      </header>
+      <main className={styles.content}>
+        <NewTask onCreateTask={createTask} />
+      </main>
+    </>
+  );
 }
