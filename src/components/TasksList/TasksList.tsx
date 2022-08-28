@@ -16,16 +16,27 @@ export default function TasksList({
   onCheckedChange,
   onDeleteTask,
 }: Props) {
+  const createdTasksCount = tasks.length;
+  const completedTasksCount = tasks.filter((task) =>
+    Boolean(task.checkedAt)
+  ).length;
+
   const isEmpty = tasks.length === 0;
 
   return (
     <section className={styles.tasks}>
       <header>
         <strong className={styles.createdCount}>
-          Tarefas criadas <span className={styles.countNumber}>0</span>
+          Tarefas criadas
+          <span className={styles.countNumber}>{createdTasksCount}</span>
         </strong>
         <strong className={styles.completedCount}>
-          Concluídas <span className={styles.countNumber}>0</span>
+          Concluídas
+          <span className={styles.countNumber}>
+            {createdTasksCount === 0
+              ? "0"
+              : `${completedTasksCount} de ${createdTasksCount}`}
+          </span>
         </strong>
       </header>
       {isEmpty ? (

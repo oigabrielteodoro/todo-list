@@ -12,6 +12,7 @@
 
 .taskItem > p {
   color: var(--gray-100);
+  line-break: anywhere;
 }
 
 .taskItem > p.checked {
