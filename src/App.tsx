@@ -40,6 +40,12 @@ export default function App() {
     );
   }
 
+  function editTask(taskToUpdate: Task) {
+    setTasks((tasks) =>
+      tasks.map((task) => (task.id === taskToUpdate.id ? taskToUpdate : task))
+    );
+  }
+
   function deleteTask(taskToDelete: Task) {
     setTasks((tasks) => tasks.filter((task) => task.id !== taskToDelete.id));
   }
@@ -53,6 +59,7 @@ export default function App() {
         <NewTask onCreateTask={createTask} />
         <TasksList
           tasks={tasks}
+          onEditDateTask={editTask}
           onCheckedChange={toggleCheckedTask}
           onDeleteTask={deleteTask}
         />
