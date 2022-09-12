@@ -1,0 +1,23 @@
+.dateInput {
+  height: 3.2rem;
+  max-width: 11rem;
+  padding-inline: 0.8rem;
+
+  outline: 0;
+  color: var(--gray-200);
+  border: 0.1rem solid var(--gray-400);
+  background: var(--gray-500);
+
+  font-size: 1.2rem;
+
+  transition: border-color 0.2s;
+}
+
+.dateInput:focus {
+  border-color: var(--purple);
+}
+
+.dateInput:disabled {
+  cursor: no-drop;
+  color: var(--gray-300);
+}
