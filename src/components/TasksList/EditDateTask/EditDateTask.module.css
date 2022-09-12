@@ -1,0 +1,10 @@
+.editDateTask {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.editDateTask:hover {
+  color: var(--blue);
+}
