@@ -1,9 +1,13 @@
 import { ChangeEvent, InputHTMLAttributes, useState } from "react";
 import VMasker from "vanilla-masker";
+import cn from "classnames";
 
 import styles from "./DateInput.module.css";
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>;
+type InputProps = {
+  overDue?: boolean;
+  checkedAt?: string | null;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export const DATE_INPUT_MASK = "99:99";
 
@@ -13,6 +17,8 @@ function formatTypedDateToMask(value: string) {
 
 export default function DateInput({
   onChange,
+  checkedAt,
+  overDue,
   defaultValue = "",
   ...rest
 }: InputProps) {
@@ -28,7 +34,9 @@ export default function DateInput({
     <input
       {...rest}
       type="text"
-      className={styles.dateInput}
+      className={cn(styles.dateInput, {
+        [styles.error]: overDue && !checkedAt,
+      })}
       onChange={handleChange}
       value={formatTypedDateToMask(value)}
     />
