@@ -7,12 +7,14 @@ import styles from "./TasksList.module.css";
 
 type Props = {
   tasks: Task[];
+  onEditTask: (task: Task) => void;
   onCheckedChange: (task: Task) => void;
   onDeleteTask: (task: Task) => void;
 };
 
 export default function TasksList({
   tasks,
+  onEditTask,
   onCheckedChange,
   onDeleteTask,
 }: Props) {
@@ -54,6 +56,7 @@ export default function TasksList({
             <TaskItem
               key={task.id}
               task={task}
+              onEditTask={onEditTask}
               onCheckedChange={onCheckedChange}
               onDeleteTask={onDeleteTask}
             />

@@ -59,7 +59,7 @@ export default function App() {
         <NewTask onCreateTask={createTask} />
         <TasksList
           tasks={tasks}
-          onEditDateTask={editTask}
+          onEditTask={editTask}
           onCheckedChange={toggleCheckedTask}
           onDeleteTask={deleteTask}
         />

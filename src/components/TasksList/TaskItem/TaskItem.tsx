@@ -10,14 +10,14 @@ import TaskItemAction from "../TaskItemAction";
 
 type Props = {
   task: Task;
-  onEditDateTask: (task: Task) => void;
-  onCheckedChange: (task: Task) => void;
+  onEditTask: (task: Task) => void;
   onDeleteTask: (task: Task) => void;
+  onCheckedChange: (task: Task) => void;
 };
 
 export default function TaskItem({
   task,
-  onEditDateTask,
+  onEditTask,
   onCheckedChange,
   onDeleteTask,
 }: Props) {
@@ -37,6 +37,10 @@ export default function TaskItem({
     setNewTaskContent(event.target.textContent ?? "");
   }
 
+  function handleEditTaskContent() {
+    onEditTask({ ...task, content: newTaskContent });
+  }
+
   return (
     <li className={styles.taskItem}>
       <Radio checked={Boolean(task.checkedAt)} onChange={handleCheckedChange} />
@@ -44,11 +48,11 @@ export default function TaskItem({
         className={task.checkedAt ? styles.checked : undefined}
         contentEditable
         onInput={handleNewTaskContentChange}
-        onBlur={() => onEditDateTask({ ...task, content: newTaskContent })}
+        onBlur={handleEditTaskContent}
         dangerouslySetInnerHTML={{ __html: newTaskContent }}
       />
       <div className={styles.actions}>
-        <EditDateTask task={task} onEditDateTask={onEditDateTask} />
+        <EditDateTask task={task} onEditDateTask={onEditTask} />
         <TaskItemAction
           title="Excluir tarefa"
           className={styles.deleteTask}
