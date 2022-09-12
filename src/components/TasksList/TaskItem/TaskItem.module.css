@@ -20,7 +20,14 @@
   text-decoration-line: line-through;
 }
 
-.deleteTask {
+.actions {
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+}
+
+.actionButton {
   border: 0;
   cursor: pointer;
   background: transparent;
@@ -37,7 +44,14 @@
   border-radius: 0.4rem;
 }
 
+.actionButton:hover {
+  background: var(--gray-400);
+}
+
 .deleteTask:hover {
   color: var(--danger);
-  background: var(--gray-400);
+}
+
+.editDateTask:hover {
+  color: var(--blue);
 }

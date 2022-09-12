@@ -1,7 +1,8 @@
-import { Trash } from "phosphor-react";
+import { Calendar, Trash } from "phosphor-react";
+import cn from "classnames";
 
-import { Task } from "../../../types/Task";
 import Radio from "../../Radio";
+import { Task } from "../../../types/Task";
 
 import styles from "./TaskItem.module.css";
 
@@ -30,13 +31,22 @@ export default function TaskItem({
       <p className={task.checkedAt ? styles.checked : undefined}>
         {task.content}
       </p>
-      <button
-        title="Excluir tarefa"
-        className={styles.deleteTask}
-        onClick={handleDeleteTask}
-      >
-        <Trash size={16} />
-      </button>
+      <div className={styles.actions}>
+        <button
+          title="Editar data"
+          className={cn([styles.actionButton, styles.editDateTask])}
+          onClick={handleDeleteTask}
+        >
+          <Calendar size={16} />
+        </button>
+        <button
+          title="Excluir tarefa"
+          className={cn([styles.actionButton, styles.deleteTask])}
+          onClick={handleDeleteTask}
+        >
+          <Trash size={16} />
+        </button>
+      </div>
     </li>
   );
 }
