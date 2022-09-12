@@ -4,9 +4,9 @@ import { Trash } from "phosphor-react";
 import Radio from "../../Radio";
 import { Task } from "../../../types/Task";
 
-import styles from "./TaskItem.module.css";
 import EditDateTask from "../EditDateTask/EditDateTask";
-import TaskItemAction from "../TaskItemAction";
+
+import styles from "./TaskItem.module.css";
 
 type Props = {
   task: Task;
@@ -53,13 +53,13 @@ export default function TaskItem({
       />
       <div className={styles.actions}>
         <EditDateTask task={task} onEditDateTask={onEditTask} />
-        <TaskItemAction
+        <button
           title="Excluir tarefa"
           className={styles.deleteTask}
           onClick={handleDeleteTask}
         >
           <Trash size={16} />
-        </TaskItemAction>
+        </button>
       </div>
     </li>
   );

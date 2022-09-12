@@ -1,3 +1,5 @@
+import { parseISO } from "date-fns/esm";
+import { useMemo } from "react";
 import type { Task } from "../../types/Task";
 
 import EmptyState from "./EmptyState";
@@ -23,12 +25,23 @@ export default function TasksList({
     Boolean(task.checkedAt)
   ).length;
 
-  const orderedTasks = tasks.sort((a, b) => {
-    const dateA = a.checkedAt ?? new Date();
-    const dateB = b.checkedAt ?? new Date();
+  const orderedTasks = useMemo(() => {
+    const orderedTasksByStartDate = tasks.sort((a, b) => {
+      const dateA = a.startDate ? parseISO(a.startDate) : new Date();
+      const dateB = b.startDate ? parseISO(b.startDate) : new Date();
 
-    return dateA.getTime() > dateB.getTime() ? -1 : 1;
-  });
+      return dateA?.getTime() > dateB?.getTime() ? -1 : 1;
+    });
+
+    const orderedTasksByCheckedAt = orderedTasksByStartDate.sort((a, b) => {
+      const dateA = a.checkedAt ? parseISO(a.checkedAt) : new Date();
+      const dateB = b.checkedAt ? parseISO(b.checkedAt) : new Date();
+
+      return dateA?.getTime() > dateB?.getTime() ? -1 : 1;
+    });
+
+    return orderedTasksByCheckedAt;
+  }, [tasks]);
 
   const isEmpty = tasks.length === 0;
 

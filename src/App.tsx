@@ -34,7 +34,10 @@ export default function App() {
     setTasks((tasks) =>
       tasks.map((task) =>
         task.id === taskToUpdate.id
-          ? { ...task, checkedAt: task.checkedAt ? null : new Date() }
+          ? {
+              ...task,
+              checkedAt: task.checkedAt ? null : new Date().toISOString(),
+            }
           : task
       )
     );
