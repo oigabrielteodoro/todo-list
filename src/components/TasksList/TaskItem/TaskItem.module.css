@@ -1,6 +1,6 @@
 .taskItem {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   background: var(--gray-500);
   border: 0.1rem solid var(--gray-400);
@@ -10,14 +10,18 @@
   column-gap: 1.2rem;
 }
 
-.taskItem > p {
+.taskItem p {
   color: var(--gray-100);
   line-break: anywhere;
 }
 
-.taskItem > p.checked {
+.taskItem p.checked {
   color: var(--gray-300);
   text-decoration-line: line-through;
+}
+
+.taskItem small {
+  font-size: 1.2rem;
 }
 
 .actions {
@@ -27,31 +31,6 @@
   margin-left: auto;
 }
 
-.actionButton {
-  border: 0;
-  cursor: pointer;
-  background: transparent;
-  color: var(--gray-300);
-  transition: background 0.2s, color 0.2s;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  margin-left: auto;
-  min-height: 2.4rem;
-  min-width: 2.4rem;
-  border-radius: 0.4rem;
-}
-
-.actionButton:hover {
-  background: var(--gray-400);
-}
-
 .deleteTask:hover {
   color: var(--danger);
-}
-
-.editDateTask:hover {
-  color: var(--blue);
 }
