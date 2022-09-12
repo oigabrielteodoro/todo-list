@@ -1,28 +1,28 @@
-import { InputHTMLAttributes, MouseEvent, useState } from "react";
+import { ChangeEvent, InputHTMLAttributes, useState } from "react";
 
 import styles from "./Radio.module.css";
 import CheckedIcon from "./CheckedIcon";
 
 export default function Radio({
-  onClick,
+  onChange,
   checked: initialChecked,
   ...props
 }: InputHTMLAttributes<HTMLInputElement>) {
   const [checked, setChecked] = useState(initialChecked);
 
-  function handleCheckedChange(event: MouseEvent<HTMLInputElement>) {
+  function handleCheckedChange(event: ChangeEvent<HTMLInputElement>) {
     setChecked((state) => !state);
 
-    onClick && onClick(event);
+    onChange && onChange(event);
   }
 
   return (
     <label className={styles.radioBox}>
       <input
-        type="radio"
+        type="checkbox"
         className={styles.radio}
         checked={checked}
-        onClick={handleCheckedChange}
+        onChange={handleCheckedChange}
         {...props}
       />
       {checked && <CheckedIcon />}
